@@ -23,13 +23,17 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+// export const meta = () => [{ name: "theme-color", content: "#C1203A" }];
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#f4a7b4" />
         <Meta />
+        <link rel="manifest" href="/manifest.json" />
         <Links />
       </head>
       <body>

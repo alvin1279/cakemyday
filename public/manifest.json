@@ -1,0 +1,8 @@
+{
+  "name": "Cake My Day",
+  "short_name": "CakeMyDay",
+  "theme_color": "#C1203A",
+  "background_color": "#FFFAF5",
+  "display": "standalone",
+  "start_url": "/"
+}
