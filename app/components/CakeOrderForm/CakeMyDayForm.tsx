@@ -167,19 +167,21 @@ export default function CakeMyDayForm() {
       {/* Progress */}
       <div className="progress-wrap">
         {STEPS.map((s, i) => (
-          <div key={s} className="step-item">
-            <div
-              className={`step-dot ${i <= step ? "active" : ""} ${i < step ? "done" : ""}`}
-            >
-              {i < step ? "✓" : i + 1}
+          <React.Fragment key={s}>
+            <div className="step-item">
+              <div
+                className={`step-dot ${i <= step ? "active" : ""} ${i < step ? "done" : ""}`}
+              >
+                {i < step ? "✓" : i + 1}
+              </div>
+              <span className={`step-label ${i === step ? "active" : ""}`}>
+                {s}
+              </span>
             </div>
-            <span className={`step-label ${i === step ? "active" : ""}`}>
-              {s}
-            </span>
             {i < STEPS.length - 1 && (
               <div className={`step-line ${i < step ? "done" : ""}`} />
             )}
-          </div>
+          </React.Fragment>
         ))}
       </div>
 

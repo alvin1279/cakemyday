@@ -516,3 +516,218 @@
   font-weight: 700;
   font-family: sans-serif;
 }
+/* =============================================
+   MOBILE-FRIENDLY OVERRIDES
+   Breakpoint: 480px (phones), 640px (tablets)
+   ============================================= */
+
+/* --- Header --- */
+@media (max-width: 480px) {
+  .header {
+    padding: 20px 16px 16px;
+  }
+
+  .header-inner {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .logo {
+    font-size: 36px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  /* Pill wraps naturally on narrow screens */
+  .header-note {
+    font-size: 11px;
+    padding: 5px 12px;
+    display: block;          /* full-width so text wraps cleanly */
+    border-radius: 12px;
+    text-align: center;
+  }
+}
+
+/* --- Progress stepper ---
+   On mobile: step-item becomes a column (dot on top, label below).
+   The step-line is now a flex sibling of step-item (see JSX change),
+   so it sits horizontally between dots at the correct height.        */
+@media (max-width: 480px) {
+  .progress-wrap {
+    padding: 14px 8px 10px;
+    align-items: flex-start;  /* items align at their tops so labels don't pull dots down */
+  }
+
+  /* Each step: column layout — dot stacked above label */
+  .step-item {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    flex: 1;                  /* share horizontal space equally */
+    min-width: 0;             /* allow shrinking */
+  }
+
+  .step-dot {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  /* Labels: small, centered, allowed to wrap */
+  .step-label {
+    display: block;
+    white-space: normal;
+    word-break: break-word;
+    text-align: center;
+    font-size: 9px;
+    line-height: 1.25;
+    color: #bbb;
+  }
+
+  .step-label.active {
+    color: var(--blush);
+    font-weight: 700;
+    /* reset any leftover absolute positioning from old rule */
+    position: static;
+    transform: none;
+  }
+
+  /* Line: sits between step-items as a flex sibling.
+     Align it to the dot's vertical center (dot = 24px, half = 12px from top of step-item) */
+  .step-line {
+    flex-shrink: 0;
+    width: 12px;              /* narrow connector on small screens */
+    margin: 0;
+    margin-top: 12px;         /* push down to visually center on dots */
+  }
+}
+
+/* --- Card --- */
+@media (max-width: 640px) {
+  .card {
+    margin: 12px 12px 0;     /* side gutters so it doesn't touch screen edges */
+    padding: 20px 16px 16px;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    margin: 10px 8px 0;
+    padding: 16px 14px 14px;
+    border-radius: 14px;
+  }
+
+  .step-title {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+}
+
+/* --- Date row: stack vertically on mobile --- */
+@media (max-width: 480px) {
+  .date-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .date-row .input {
+    width: 100%;
+  }
+}
+
+/* --- Flavor grid: single column on small phones --- */
+@media (max-width: 400px) {
+  .flavor-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Nav row: full-width buttons on mobile ---
+   Back stays left, Continue/Submit fills remaining space */
+@media (max-width: 480px) {
+  .nav-row {
+    gap: 10px;
+    padding-top: 14px;
+  }
+
+  .back-btn {
+    flex-shrink: 0;
+    padding: 11px 14px;
+    font-size: 13px;
+  }
+
+  .next-btn,
+  .submit-btn {
+    flex: 1;                 /* fill remaining width */
+    text-align: center;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+}
+
+/* --- Success card: reduce giant top margin on mobile --- */
+@media (max-width: 640px) {
+  .success-card {
+    margin: 32px 16px;
+    padding: 28px 20px;
+  }
+
+  .success-emoji {
+    font-size: 48px;
+  }
+
+  .success-title {
+    font-size: 22px;
+  }
+
+  .success-text {
+    font-size: 14px;
+  }
+}
+
+/* --- Confirm box: smaller text on very small screens --- */
+@media (max-width: 400px) {
+  .confirm-box {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+}
+
+/* --- Chips: allow them to shrink a bit on mobile --- */
+@media (max-width: 400px) {
+  .chip {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+/* --- Touch targets: min 44px height for all interactive elements --- */
+@media (max-width: 640px) {
+  .back-btn,
+  .next-btn,
+  .submit-btn,
+  .reset-btn {
+    min-height: 44px;
+  }
+
+  .chip,
+  .radio-card,
+  .confirm-box,
+  .flavor-chip {
+    min-height: 44px;
+  }
+
+  .input,
+  .textarea {
+    font-size: 16px;         /* prevents iOS auto-zoom on focus */
+    min-height: 44px;
+  }
+}
