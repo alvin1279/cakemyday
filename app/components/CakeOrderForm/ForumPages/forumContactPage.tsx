@@ -12,7 +12,7 @@ import type { StepProps } from "../Forum.Types";
 
 export function ForumContactPage({ form, set, toggleArr }: StepProps) {
   return (
-    <div className="p-8 rounded-lg shadow-md w-full max-w-2xl mx-auto shadow-petal/50">
+    <div className="flex flex-col items-center p-8 rounded-lg shadow-md w-full max-w-2xl mx-auto shadow-petal/50 ">
       <h2 className="mb-8 mt-4 text-2xl font-bold text-berry">
         Contact Information
       </h2>
@@ -46,7 +46,7 @@ export function FieldInput({ form, set, toggleArr }: StepProps) {
             type="tel"
             placeholder="(555) 000-0000"
             value={form.phone || ""}
-            onChange={(e) => set("phone", e.target.value)}
+            onChange={(e) => set("phone", e.target.value ? parseInt(e.target.value) : null)}
           />
         </Field>
 
@@ -73,7 +73,9 @@ export function CheckboxGroup({ form, toggleArr }: StepProps) {
 
   return (
     <FieldSet>
-      <FieldLegend variant="label">Contact Preference:</FieldLegend>
+      <FieldLegend variant="label" className="text-berry">
+        Contact Preference:
+      </FieldLegend>
       <FieldDescription>
         Select the options you are available for contact.
       </FieldDescription>
@@ -143,3 +145,4 @@ export function CheckboxGroup({ form, toggleArr }: StepProps) {
     </FieldSet>
   );
 }
+

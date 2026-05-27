@@ -34,7 +34,7 @@ const STEPS: string[] = ["Contact", "Order Type", "Flavors & Toppings", "Details
 
 const initialFormState: FormState = {
   fullName: "",
-  phone: "",
+  phone: null,
   email: "",
   contactPref: [],
   orderType: "",
