@@ -1,37 +1,12 @@
 import React, { useState } from "react";
 import "./CakeMyDayForm.css";
+import type{ Flavor, FormState, StepProps } from "./Forum.Types";
+import { ForumContactPage } from "./ForumPages/forumContactPage";
 
 
 // --- Types & Interfaces ---
 
-export interface Flavor {
-  id: string;
-  label: string;
-  emoji: string;
-}
 
-export interface FormState {
-  fullName: string;
-  phone: string;
-  email: string;
-  contactPref: string[];
-  orderType: string;
-  withinDistance: boolean;
-  flavors: string[];
-  toppings: string[];
-  flavorBreakdown: string;
-  flightCount: string;
-  pickupDate: string;
-  pickupTime: string;
-  comments: string;
-  paidUnderstanding: boolean;
-}
-
-export interface StepProps {
-  form: FormState;
-  set: <K extends keyof FormState>(key: K, val: FormState[K]) => void;
-  toggleArr: (key: "contactPref" | "flavors" | "toppings", val: string) => void;
-}
 
 // --- Constants ---
 
@@ -194,46 +169,7 @@ export default function CakeMyDayForm() {
 
 function StepContact({ form, set, toggleArr }: StepProps) {
   return (
-    <div className="step-content">
-      <h2 className="step-title">Contact Information</h2>
-      <Field label="Full Name *">
-        <input
-          className="input"
-          placeholder="Jane Smith"
-          value={form.fullName}
-          onChange={(e) => set("fullName", e.target.value)}
-        />
-      </Field>
-      <Field label="Phone Number *">
-        <input
-          className="input"
-          placeholder="(555) 000-0000"
-          value={form.phone}
-          onChange={(e) => set("phone", e.target.value)}
-        />
-      </Field>
-      <Field label="Email Address *">
-        <input
-          className="input"
-          placeholder="you@email.com"
-          type="email"
-          value={form.email}
-          onChange={(e) => set("email", e.target.value)}
-        />
-      </Field>
-      <Field label="Contact Preference *">
-        <div className="check-group">
-          {["Text", "Call", "Email"].map((opt) => (
-            <CheckChip
-              key={opt}
-              label={opt}
-              checked={form.contactPref.includes(opt)}
-              onToggle={() => toggleArr("contactPref", opt)}
-            />
-          ))}
-        </div>
-      </Field>
-    </div>
+      <ForumContactPage form={form} set={set} toggleArr={toggleArr} />
   );
 }
 
