@@ -1,36 +1,81 @@
 import React, { useState } from "react";
 import "./CakeMyDayForm.css";
-import type{ Flavor, FormState, StepProps } from "./Forum.Types";
+import type { Flavor, FormState, StepProps } from "./Forum.Types";
 import { ForumContactPage } from "./ForumPages/forumContactPage";
-
+import ForumOrderTypePage from "./ForumPages/forumOrderTypePage";
 
 // --- Types & Interfaces ---
-
-
 
 // --- Constants ---
 
 export const FLAVORS: Flavor[] = [
-  { id: "vanilla_vanilla", label: "Vanilla with Vanilla Buttercream", emoji: "🍦" },
-  { id: "vanilla_chocolate", label: "Vanilla with Chocolate Buttercream", emoji: "🍫" },
-  { id: "chocolate_vanilla", label: "Chocolate with Vanilla Buttercream", emoji: "🤍" },
-  { id: "chocolate_chocolate", label: "Chocolate with Chocolate Buttercream", emoji: "🍫" },
-  { id: "red_velvet", label: "Red Velvet with Vanilla Buttercream", emoji: "❤️" },
+  {
+    id: "vanilla_vanilla",
+    label: "Vanilla with Vanilla Buttercream",
+    emoji: "🍦",
+  },
+  {
+    id: "vanilla_chocolate",
+    label: "Vanilla with Chocolate Buttercream",
+    emoji: "🍫",
+  },
+  {
+    id: "chocolate_vanilla",
+    label: "Chocolate with Vanilla Buttercream",
+    emoji: "🤍",
+  },
+  {
+    id: "chocolate_chocolate",
+    label: "Chocolate with Chocolate Buttercream",
+    emoji: "🍫",
+  },
+  {
+    id: "red_velvet",
+    label: "Red Velvet with Vanilla Buttercream",
+    emoji: "❤️",
+  },
   { id: "biscoff", label: "Biscoff with Biscoff Buttercream", emoji: "🍪" },
-  { id: "lemon", label: "Lemon with Lemon Buttercream & Graham Cracker Crumbles", emoji: "🍋" },
+  {
+    id: "lemon",
+    label: "Lemon with Lemon Buttercream & Graham Cracker Crumbles",
+    emoji: "🍋",
+  },
   { id: "cookies_cream", label: "Cookies 'n Cream", emoji: "🖤" },
-  { id: "strawberry", label: "Strawberry with Strawberry Buttercream & White Chocolate", emoji: "🍓" },
-  { id: "confetti", label: "Confetti Sprinkle with Vanilla or Chocolate Buttercream", emoji: "🎉" },
+  {
+    id: "strawberry",
+    label: "Strawberry with Strawberry Buttercream & White Chocolate",
+    emoji: "🍓",
+  },
+  {
+    id: "confetti",
+    label: "Confetti Sprinkle with Vanilla or Chocolate Buttercream",
+    emoji: "🎉",
+  },
   { id: "other", label: "Other", emoji: "✨" },
 ];
 
 export const TOPPINGS: string[] = [
-  "Oreo Crumbles", "Chocolate Chip Cookie Pieces", "Peanuts", "Mini M&Ms",
-  "Heath", "White Chocolate Chips", "Strawberries", "Gummy Bears",
-  "Sprinkles", "Chocolate Chips", "Reese's", "Mini Marshmallow", "None",
+  "Oreo Crumbles",
+  "Chocolate Chip Cookie Pieces",
+  "Peanuts",
+  "Mini M&Ms",
+  "Heath",
+  "White Chocolate Chips",
+  "Strawberries",
+  "Gummy Bears",
+  "Sprinkles",
+  "Chocolate Chips",
+  "Reese's",
+  "Mini Marshmallow",
+  "None",
 ];
 
-const STEPS: string[] = ["Contact", "Order Type", "Flavors & Toppings", "Details"];
+const STEPS: string[] = [
+  "Contact",
+  "Order Type",
+  "Flavors & Toppings",
+  "Details",
+];
 
 const initialFormState: FormState = {
   fullName: "",
@@ -60,7 +105,10 @@ export default function CakeMyDayForm() {
     setForm((f) => ({ ...f, [key]: val }));
   };
 
-  const toggleArr = (key: "contactPref" | "flavors" | "toppings", val: string) => {
+  const toggleArr = (
+    key: "contactPref" | "flavors" | "toppings",
+    val: string,
+  ) => {
     setForm((f) => {
       const arr = f[key];
       return {
@@ -71,9 +119,16 @@ export default function CakeMyDayForm() {
   };
 
   const canNext = (): boolean => {
-    if (step === 0) return !!(form.fullName && form.phone && form.email && form.contactPref.length > 0);
+    if (step === 0)
+      return !!(
+        form.fullName &&
+        form.phone &&
+        form.email &&
+        form.contactPref.length > 0
+      );
     if (step === 1) return !!(form.orderType && form.withinDistance);
-    if (step === 2) return form.flavors.length > 0 || form.orderType === "flight";
+    if (step === 2)
+      return form.flavors.length > 0 || form.orderType === "flight";
     if (step === 3) return form.paidUnderstanding;
     return true;
   };
@@ -104,7 +159,8 @@ export default function CakeMyDayForm() {
           </div>
         </div>
         <p className="header-note">
-          Mini cakes sold in orders of 5 ($25) · Cake flights sold in orders of 3 ($15) · Pickup only · Belton, TX
+          Mini cakes sold in orders of 5 ($25) · Cake flights sold in orders of
+          3 ($15) · Pickup only · Belton, TX
         </p>
       </div>
 
@@ -112,7 +168,9 @@ export default function CakeMyDayForm() {
       <div className="progress-wrap">
         {STEPS.map((s, i) => (
           <div key={s} className="step-item">
-            <div className={`step-dot ${i <= step ? "active" : ""} ${i < step ? "done" : ""}`}>
+            <div
+              className={`step-dot ${i <= step ? "active" : ""} ${i < step ? "done" : ""}`}
+            >
               {i < step ? "✓" : i + 1}
             </div>
             <span className={`step-label ${i === step ? "active" : ""}`}>
@@ -127,10 +185,18 @@ export default function CakeMyDayForm() {
 
       {/* Card */}
       <div className="card">
-        {step === 0 && <StepContact form={form} set={set} toggleArr={toggleArr} />}
-        {step === 1 && <StepOrderType form={form} set={set} toggleArr={toggleArr} />}
-        {step === 2 && <StepFlavors form={form} set={set} toggleArr={toggleArr} />}
-        {step === 3 && <StepDetails form={form} set={set} toggleArr={toggleArr} />}
+        {step === 0 && (
+          <StepContact form={form} set={set} toggleArr={toggleArr} />
+        )}
+        {step === 1 && (
+          <StepOrderType form={form} set={set} toggleArr={toggleArr} />
+        )}
+        {step === 2 && (
+          <StepFlavors form={form} set={set} toggleArr={toggleArr} />
+        )}
+        {step === 3 && (
+          <StepDetails form={form} set={set} toggleArr={toggleArr} />
+        )}
 
         {/* Navigation */}
         <div className="nav-row">
@@ -159,7 +225,8 @@ export default function CakeMyDayForm() {
       </div>
 
       <p className="footer">
-        Submitting does not guarantee your order until availability is confirmed by a Cake My Day team member.
+        Submitting does not guarantee your order until availability is confirmed
+        by a Cake My Day team member.
       </p>
     </div>
   );
@@ -168,47 +235,13 @@ export default function CakeMyDayForm() {
 // --- Step Components ---
 
 function StepContact({ form, set, toggleArr }: StepProps) {
-  return (
-      <ForumContactPage form={form} set={set} toggleArr={toggleArr} />
-  );
+  return <ForumContactPage form={form} set={set} toggleArr={toggleArr} />;
 }
 
 function StepOrderType({ form, set }: StepProps) {
   return (
     <div className="step-content">
-      <h2 className="step-title">Order Type</h2>
-      <Field label="What are you ordering? *">
-        <div className="radio-group">
-          <RadioCard
-            emoji="✈️"
-            title="Weekly Cake Flight"
-            desc="3 preselected flavors · $15 · Flavors announced on social media"
-            selected={form.orderType === "flight"}
-            onClick={() => set("orderType", "flight")}
-          />
-          <RadioCard
-            emoji="🎂"
-            title="Custom Order"
-            desc="Choose your own flavors · 5 cakes per order · $25"
-            selected={form.orderType === "custom"}
-            onClick={() => set("orderType", "custom")}
-          />
-        </div>
-      </Field>
-      <Field label="Are you within driving distance of Belton, Texas? *">
-        <p className="field-note">
-          We are a home bakery and do not offer delivery.
-        </p>
-        <div
-          className={`confirm-box ${form.withinDistance ? "active" : ""}`}
-          onClick={() => set("withinDistance", !form.withinDistance)}
-        >
-          <span className="confirm-check">
-            {form.withinDistance ? "✓" : "○"}
-          </span>
-          <span>Yes, I can pick up in Belton, TX</span>
-        </div>
-      </Field>
+      <ForumOrderTypePage form={form} set={set} />
     </div>
   );
 }
@@ -224,7 +257,8 @@ function StepFlavors({ form, set, toggleArr }: StepProps) {
         <div className="flight-note">
           <span style={{ fontSize: 32 }}>✈️</span>
           <p>
-            Cake flight flavors are preselected and announced via social media each week. Each flight = 3 cakes for $15.
+            Cake flight flavors are preselected and announced via social media
+            each week. Each flight = 3 cakes for $15.
           </p>
           <Field label="How many flights would you like?">
             <input
@@ -246,7 +280,7 @@ function StepFlavors({ form, set, toggleArr }: StepProps) {
                   key={f.id}
                   flavor={f}
                   selected={form.flavors.includes(f.id)}
-                  onToggle={() => toggleArr("flavors", f.id)}
+                  onToggle={() => toggleArr && toggleArr("flavors", f.id)}
                 />
               ))}
             </div>
@@ -270,7 +304,7 @@ function StepFlavors({ form, set, toggleArr }: StepProps) {
               key={t}
               label={t}
               checked={form.toppings.includes(t)}
-              onToggle={() => toggleArr("toppings", t)}
+              onToggle={() => toggleArr && toggleArr("toppings", t)}
               small
             />
           ))}
@@ -288,7 +322,8 @@ function StepDetails({ form, set }: StepProps) {
       {form.orderType === "custom" && (
         <Field label="Preferred pickup date & time *">
           <p className="field-note">
-            Pickup times based on availability. Official time confirmed after order is approved.
+            Pickup times based on availability. Official time confirmed after
+            order is approved.
           </p>
           <div className="date-row">
             <input
@@ -317,7 +352,8 @@ function StepDetails({ form, set }: StepProps) {
           {form.paidUnderstanding ? "✓" : "○"}
         </span>
         <span>
-          I understand that orders must be paid in full at least 48 hours before pickup (rush orders have additional fees) *
+          I understand that orders must be paid in full at least 48 hours before
+          pickup (rush orders have additional fees) *
         </span>
       </div>
 
@@ -333,8 +369,12 @@ function StepDetails({ form, set }: StepProps) {
 
       <div className="summary-box">
         <h3 className="summary-title">Order Summary</h3>
-        <p><strong>Name:</strong> {form.fullName}</p>
-        <p><strong>Contact:</strong> {form.email} · {form.phone}</p>
+        <p>
+          <strong>Name:</strong> {form.fullName}
+        </p>
+        <p>
+          <strong>Contact:</strong> {form.email} · {form.phone}
+        </p>
         <p>
           <strong>Order type:</strong>{" "}
           {form.orderType === "flight" ? "Weekly Cake Flight" : "Custom Order"}
@@ -358,7 +398,13 @@ function StepDetails({ form, set }: StepProps) {
   );
 }
 
-function SuccessPage({ form, onReset }: { form: FormState; onReset: () => void }) {
+function SuccessPage({
+  form,
+  onReset,
+}: {
+  form: FormState;
+  onReset: () => void;
+}) {
   return (
     <div className="page">
       <div className="success-card">
@@ -369,7 +415,8 @@ function SuccessPage({ form, onReset }: { form: FormState; onReset: () => void }
           {form.contactPref.join(" or ").toLowerCase()} to confirm your order.
         </p>
         <p className="success-note">
-          Remember: submitting this form does not guarantee your order until availability is confirmed by a Cake My Day team member.
+          Remember: submitting this form does not guarantee your order until
+          availability is confirmed by a Cake My Day team member.
         </p>
         <button className="reset-btn" onClick={onReset}>
           Place Another Order
@@ -381,7 +428,13 @@ function SuccessPage({ form, onReset }: { form: FormState; onReset: () => void }
 
 // --- Shared UI Components ---
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="field">
       <label className="label">{label}</label>
@@ -390,7 +443,17 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   );
 }
 
-function CheckChip({ label, checked, onToggle, small }: { label: string; checked: boolean; onToggle: () => void; small?: boolean }) {
+function CheckChip({
+  label,
+  checked,
+  onToggle,
+  small,
+}: {
+  label: string;
+  checked: boolean;
+  onToggle: () => void;
+  small?: boolean;
+}) {
   return (
     <div
       className={`chip ${checked ? "active" : ""} ${small ? "small" : ""}`}
@@ -402,9 +465,20 @@ function CheckChip({ label, checked, onToggle, small }: { label: string; checked
   );
 }
 
-function FlavorChip({ flavor, selected, onToggle }: { flavor: Flavor; selected: boolean; onToggle: () => void }) {
+function FlavorChip({
+  flavor,
+  selected,
+  onToggle,
+}: {
+  flavor: Flavor;
+  selected: boolean;
+  onToggle: () => void;
+}) {
   return (
-    <div className={`flavor-chip ${selected ? "active" : ""}`} onClick={onToggle}>
+    <div
+      className={`flavor-chip ${selected ? "active" : ""}`}
+      onClick={onToggle}
+    >
       <span style={{ fontSize: 22 }}>{flavor.emoji}</span>
       <span className="flavor-label">{flavor.label}</span>
       {selected && <span className="flavor-check">✓</span>}
@@ -412,7 +486,19 @@ function FlavorChip({ flavor, selected, onToggle }: { flavor: Flavor; selected: 
   );
 }
 
-function RadioCard({ emoji, title, desc, selected, onClick }: { emoji: string; title: string; desc: string; selected: boolean; onClick: () => void }) {
+function RadioCard({
+  emoji,
+  title,
+  desc,
+  selected,
+  onClick,
+}: {
+  emoji: string;
+  title: string;
+  desc: string;
+  selected: boolean;
+  onClick: () => void;
+}) {
   return (
     <div className={`radio-card ${selected ? "active" : ""}`} onClick={onClick}>
       <span style={{ fontSize: 32 }}>{emoji}</span>
