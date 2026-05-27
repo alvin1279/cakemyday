@@ -48,7 +48,7 @@ export default function Hero() {
           special moments across Central Texas.
         </p>
         <div className="hero-actions">
-          <a href="#" className="btn btn-primary">
+          <a href="forum-custom" className="btn btn-primary">
             Custom Order
           </a>
           <a href="#" className="btn btn-ghost">

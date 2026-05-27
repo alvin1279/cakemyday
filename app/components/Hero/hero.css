@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;600&display=swap");
 
 :root {
   --cream: #fffaf5;
@@ -14,10 +14,12 @@
   padding: 0;
 }
 
+
+/* height: 100vh so hero fills exactly one viewport, no overflow */
 .hero-container {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   overflow: hidden;
@@ -40,7 +42,9 @@
 }
 
 @keyframes slowZoom {
-  to { transform: scale(1); }
+  to {
+    transform: scale(1);
+  }
 }
 
 .hero-image-overlay {
@@ -56,14 +60,21 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 5rem 5rem 5rem 4rem;
-  gap: 2rem;
+  /* tighter padding so content never overflows 100vh */
+  padding: 3rem 4rem 3rem 3.5rem;
+  gap: 1.5rem;
   animation: fadeDown 1s 0.3s both ease-out;
 }
 
 @keyframes fadeDown {
-  from { opacity: 0; transform: translateY(-24px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ── Logo row ── */
@@ -72,17 +83,16 @@
   align-items: center;
   gap: 1rem;
   overflow: hidden;
-  min-height: 88px;
+  min-height: 72px;
 }
 
 .hero-logo {
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
   transform: translateX(300%);
-  /* fadeDown finishes at 0.3s delay + 1s duration = 1.3s */
   transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.3s;
 }
 
@@ -100,7 +110,6 @@
   white-space: nowrap;
   opacity: 0;
   transform: translateX(-8px);
-  /* logo finishes at 1.3s + 0.7s = 2s */
   transition:
     opacity 0.4s ease 2s,
     transform 0.4s ease 2s;
@@ -114,7 +123,8 @@
 .hero-title {
   font-family: "Cormorant Garamond", serif;
   font-weight: 600;
-  font-size: clamp(4rem, 9vw, 8.5rem);
+  /* tighter clamp so it never pushes content off screen */
+  font-size: clamp(3rem, 7vw, 7rem);
   line-height: 0.95;
   color: var(--berry);
   letter-spacing: -0.01em;
@@ -127,8 +137,8 @@
 
 .hero-subtitle {
   font-family: "DM Sans", sans-serif;
-  font-weight: 600;
-  font-size: 1.25rem;
+  font-weight: 400;
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
   line-height: 1.7;
   color: var(--blush);
   max-width: 30ch;
@@ -140,17 +150,17 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
 }
 
 .btn {
   font-family: "DM Sans", sans-serif;
   font-weight: 400;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 0.85rem 2rem;
+  padding: 0.75rem 1.75rem;
   border-radius: 2px;
   transition: all 0.25s ease;
   cursor: pointer;
@@ -181,8 +191,8 @@
 /* ── Scroll hint ── */
 .hero-scroll-hint {
   position: absolute;
-  bottom: 2.5rem;
-  right: 5rem;
+  bottom: 2rem;
+  right: 3.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -193,7 +203,7 @@
 
 .hero-scroll-hint span {
   font-family: "DM Sans", sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--mist);
@@ -202,22 +212,29 @@
 
 .scroll-line {
   width: 1px;
-  height: 60px;
+  height: 50px;
   background: linear-gradient(to bottom, var(--mist), transparent);
   animation: lineGrow 1.5s 1.8s both ease-out;
   transform-origin: top;
 }
 
 @keyframes lineGrow {
-  from { transform: scaleY(0); opacity: 0; }
-  to   { transform: scaleY(1); opacity: 1; }
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
 }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .hero-container {
     grid-template-columns: 1fr;
-    grid-template-rows: auto 45vh;
+    /* content takes what it needs, image fills the rest */
+    grid-template-rows: auto 1fr;
   }
 
   .hero-image-overlay {
@@ -225,11 +242,33 @@
   }
 
   .hero-content {
-    padding: 2rem 1.5rem 4rem;
+    padding: 2.5rem 1.5rem 1.5rem;
     justify-content: flex-start;
+    gap: 1.25rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.8rem, 12vw, 4.5rem);
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
   }
 
   .hero-scroll-hint {
     display: none;
+  }
+}
+
+/* small phones */
+@media (max-width: 390px) {
+  .hero-content {
+    padding: 2rem 1.25rem 1rem;
+    gap: 1rem;
+  }
+
+  .hero-logo {
+    width: 52px;
+    height: 52px;
   }
 }
