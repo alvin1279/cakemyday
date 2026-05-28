@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./CakeMyDayForm.css";
-import type { Flavor, FormState, StepProps } from "./Forum.Types";
+import type { FormState, StepProps } from "./Forum.Types";
 import { ForumContactPage } from "./ForumPages/forumContactPage";
 import ForumOrderTypePage from "./ForumPages/forumOrderTypePage";
 import ForumFlavourPage from "./ForumPages/forumFlavourPage";
@@ -145,7 +145,13 @@ export default function CakeMyDayForm() {
         {/* Navigation */}
         <div className="nav-row">
           {step > 0 && (
-            <button className="back-btn" onClick={() => { setStep((s) => s - 1); scrollToTop(); }}>
+            <button
+              className="back-btn"
+              onClick={() => {
+                setStep((s) => s - 1);
+                scrollToTop();
+              }}
+            >
               ← Back
             </button>
           )}
@@ -153,7 +159,12 @@ export default function CakeMyDayForm() {
           {step < STEPS.length - 1 ? (
             <button
               className={`next-btn ${canNext() ? "" : "disabled"}`}
-              onClick={() => { if (canNext()) { setStep((s) => s + 1); scrollToTop(); } }}
+              onClick={() => {
+                if (canNext()) {
+                  setStep((s) => s + 1);
+                  scrollToTop();
+                }
+              }}
             >
               Continue →
             </button>

@@ -4,10 +4,8 @@ import "./hero.css";
 // import logo from "./logo.png"; // if it's next to hero.jsx
 const logo = "/logo.png";
 
-
 const imageUrl =
   "https://preppykitchen.com/wp-content/uploads/2022/05/Strawberry-Cake-Recipe-Card.jpg";
-
 
 export default function Hero() {
   const [logoLoaded, setLogoLoaded] = useState(false);
@@ -51,7 +49,7 @@ export default function Hero() {
           <a href="forum-custom" className="btn btn-primary">
             Custom Order
           </a>
-          <a href="#" className="btn btn-ghost">
+          <a href="forum-event" className="btn btn-ghost">
             Book an Event
           </a>
         </div>

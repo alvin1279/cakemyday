@@ -1,5 +1,6 @@
 import { type RouteConfig, index, route } from "@react-router/dev/routes";
 
 export default [index("routes/home.tsx"),
-route("forum-custom", "./routes/forumCustom.tsx")
+route("forum-custom", "./routes/forumCustom.tsx"),
+route("forum-event", "./routes/forumEvent.tsx"),
 ] satisfies RouteConfig;
