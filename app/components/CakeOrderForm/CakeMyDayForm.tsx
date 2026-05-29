@@ -112,7 +112,7 @@ export default function CakeMyDayForm() {
           <React.Fragment key={s}>
             <div className="step-item">
               <div
-                className={`step-dot ${i <= step ? "active" : ""} ${i < step ? "done" : ""}`}
+                className={`step-dot ${i < step ? "done" : i === step ? "active" : ""}`}
               >
                 {i < step ? "✓" : i + 1}
               </div>
