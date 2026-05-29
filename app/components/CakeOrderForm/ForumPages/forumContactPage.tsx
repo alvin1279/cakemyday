@@ -46,7 +46,7 @@ export function FieldInput({ form, set, toggleArr }: StepProps) {
             type="tel"
             placeholder="(555) 000-0000"
             value={form.phone || ""}
-            onChange={(e) => set("phone", e.target.value ? parseInt(e.target.value) : null)}
+            onChange={(e) => set("phone", e.target.value || null)}
           />
         </Field>
 

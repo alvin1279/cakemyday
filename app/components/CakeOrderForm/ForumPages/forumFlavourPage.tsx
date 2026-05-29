@@ -116,7 +116,7 @@ export default function ForumFlavourPage({ form, set, toggleArr }: StepProps) {
       if (form.toppings.includes("None")) {
         set("toppings", [t]);
       } else {
-        toggleArr?.("toppings", t); // ✅ optional chaining
+        toggleArr("toppings", t);
       }
     }
   };

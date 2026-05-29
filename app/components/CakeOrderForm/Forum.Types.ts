@@ -6,7 +6,7 @@ export interface Flavor {
 
 export interface FormState {
   fullName: string;
-  phone: number|null;
+  phone: string | null;
   email: string;
   contactPref: string[];
   orderType: string;

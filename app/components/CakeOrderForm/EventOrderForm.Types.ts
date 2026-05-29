@@ -1,7 +1,7 @@
 export interface EventFormState {
   // Contact (identical fields to FormState so ForumContactPage can be reused)
   fullName: string;
-  phone: number | null;
+  phone: string | null;
   email: string;
   contactPref: string[];
 
