@@ -130,15 +130,11 @@
 .card {
   background: #fff;
   border-radius: 20px;
-  box-shadow: 0 4px 32px rgba(232, 96, 122, 0.1);
+  box-shadow: 0 4px 32px var(--blush);
   margin: 16px auto 0;
   max-width: 580px;
   padding: 28px 28px 20px;
   border: 1px solid var(--petal);
-}
-
-.step-content {
-  margin-bottom: 8px;
 }
 
 .nav-row {

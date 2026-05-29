@@ -129,18 +129,19 @@ export default function CakeMyDayForm() {
 
       {/* Card */}
       <div className="card">
-        {step === 0 && (
-          <StepContact form={form} set={set} toggleArr={toggleArr} />
-        )}
-        {step === 1 && (
-          <StepOrderType form={form} set={set} toggleArr={toggleArr} />
-        )}
-        {step === 2 && (
-          <StepFlavors form={form} set={set} toggleArr={toggleArr} />
-        )}
-        {step === 3 && (
-          <StepDetails form={form} set={set} toggleArr={toggleArr} />
-        )}
+        
+        {step === 0 && 
+          <ForumContactPage form={form} set={set} toggleArr={toggleArr} />
+        }
+        {step === 1 && 
+          <ForumOrderTypePage form={form} set={set} />
+        }
+        {step === 2 &&
+          <ForumFlavourPage form={form} set={set} toggleArr={toggleArr} />
+        }
+        {step === 3 &&
+          <ForumDetailsPage form={form} set={set} />
+        }
 
         {/* Navigation */}
         <div className="nav-row">
@@ -183,36 +184,6 @@ export default function CakeMyDayForm() {
         Submitting does not guarantee your order until availability is confirmed
         by a Cake My Day team member.
       </p>
-    </div>
-  );
-}
-
-// --- Step Components ---
-
-function StepContact({ form, set, toggleArr }: StepProps) {
-  return <ForumContactPage form={form} set={set} toggleArr={toggleArr} />;
-}
-
-function StepOrderType({ form, set }: StepProps) {
-  return (
-    <div className="step-content">
-      <ForumOrderTypePage form={form} set={set} />
-    </div>
-  );
-}
-
-function StepFlavors({ form, set, toggleArr }: StepProps) {
-  return (
-    <div className="step-content">
-      <ForumFlavourPage form={form} set={set} toggleArr={toggleArr} />
-    </div>
-  );
-}
-
-function StepDetails({ form, set }: StepProps) {
-  return (
-    <div className="step-content">
-      <ForumDetailsPage form={form} set={set} />
     </div>
   );
 }
