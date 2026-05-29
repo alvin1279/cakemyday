@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./CakeMyDayForm.css";
 import type { FormState, StepProps } from "./Forum.Types";
-import { ForumContactPage } from "./ForumPages/forumContactPage";
+import ForumContactPage from "./ForumPages/forumContactPage";
 import ForumOrderTypePage from "./ForumPages/forumOrderTypePage";
 import ForumFlavourPage from "./ForumPages/forumFlavourPage";
 import ForumDetailsPage from "./ForumPages/forumDetailsPage";
@@ -129,7 +129,7 @@ export default function CakeMyDayForm() {
 
       {/* Card */}
       <div className="card">
-        
+
         {step === 0 && 
           <ForumContactPage form={form} set={set} toggleArr={toggleArr} />
         }

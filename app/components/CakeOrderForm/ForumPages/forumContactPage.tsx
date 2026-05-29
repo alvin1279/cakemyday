@@ -10,7 +10,7 @@ import {
 import { Input } from "~/components/ui/input";
 import type { StepProps } from "../Forum.Types";
 
-export function ForumContactPage({ form, set, toggleArr }: StepProps) {
+export default function ForumContactPage({ form, set, toggleArr }: StepProps) {
   return (
     <div className="flex flex-col items-center p-8 rounded-lg shadow-md w-full max-w-2xl mx-auto shadow-petal/50 ">
       <h2 className="mb-8 mt-4 text-2xl font-bold text-berry">
@@ -22,7 +22,7 @@ export function ForumContactPage({ form, set, toggleArr }: StepProps) {
   );
 }
 
-export function FieldInput({ form, set, toggleArr }: StepProps) {
+function FieldInput({ form, set, toggleArr }: StepProps) {
   return (
     <FieldSet className="w-full max-w-xs">
       <FieldGroup>
@@ -68,7 +68,7 @@ export function FieldInput({ form, set, toggleArr }: StepProps) {
   );
 }
 
-export function CheckboxGroup({ form, toggleArr }: StepProps) {
+function CheckboxGroup({ form, toggleArr }: StepProps) {
   const preferences = form.contactPref || [];
 
   return (
