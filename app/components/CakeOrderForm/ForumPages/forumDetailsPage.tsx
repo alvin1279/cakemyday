@@ -1,4 +1,4 @@
-import type { StepPropsMinimal } from "../Forum.Types";
+import type { StepPropsMinimal } from "../Types/Forum.Types";
 import { FLAVORS } from "../forum.data";
 import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";

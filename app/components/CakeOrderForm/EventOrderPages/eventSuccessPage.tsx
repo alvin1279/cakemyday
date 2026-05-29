@@ -1,4 +1,4 @@
-import type { EventFormState } from "../EventOrderForm.Types";
+import type { EventFormState } from "../Types/EventOrderForm.Types";
 import { PACKAGES, EVENT_TYPES } from "../eventOrder.data";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent } from "~/components/ui/card";

@@ -1,5 +1,5 @@
 import { FLAVORS, TOPPINGS } from "../forum.data";
-import type { StepProps, Flavor } from "../Forum.Types";
+import type { StepProps, Flavor } from "../Types/Forum.Types";
 import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";

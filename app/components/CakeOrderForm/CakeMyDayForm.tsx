@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./CakeMyDayForm.css";
-import type { FormState, StepProps } from "./Forum.Types";
+import type { FormState, StepProps } from "./Types/Forum.Types";
 import ForumContactPage from "./ForumPages/forumContactPage";
 import ForumOrderTypePage from "./ForumPages/forumOrderTypePage";
 import ForumFlavourPage from "./ForumPages/forumFlavourPage";

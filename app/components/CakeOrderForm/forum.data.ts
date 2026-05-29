@@ -1,4 +1,4 @@
-import type { Flavor } from "./Forum.Types";
+import type { Flavor } from "./Types/Forum.Types";
 
 export const FLAVORS: Flavor[] = [
   { id: "vanilla_vanilla",    label: "Vanilla with Vanilla Buttercream",                          emoji: "🍦" },

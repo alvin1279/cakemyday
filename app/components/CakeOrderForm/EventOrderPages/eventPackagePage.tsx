@@ -1,4 +1,4 @@
-import type { EventStepPropsMinimal } from "../EventOrderForm.Types";
+import type { EventStepPropsMinimal } from "../Types/EventOrderForm.Types";
 import { PACKAGES } from "../eventOrder.data";
 
 export default function EventPackagePage({ form, set }: EventStepPropsMinimal) {

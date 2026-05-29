@@ -1,4 +1,4 @@
-import type { StepPropsMinimal } from "../Forum.Types";
+import type { StepPropsMinimal } from "../Types/Forum.Types";
 import { FieldLabel } from "~/components/ui/field";
 import { Checkbox } from "~/components/ui/checkbox";
 import { RadioGroupItem, RadioGroup } from "~/components/ui/radio-group";

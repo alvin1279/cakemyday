@@ -5,7 +5,7 @@
  * never touches them.
  */
 import ForumContactPage from "../ForumPages/forumContactPage";
-import type { EventStepProps } from "../EventOrderForm.Types";
+import type { EventStepProps } from "../Types/EventOrderForm.Types";
 
 export function EventContactPage({ form, set, toggleArr }: EventStepProps) {
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./CakeMyDayForm.css";
-import type { EventFormState, EventStepProps } from "./EventOrderForm.Types";
+import type { EventFormState, EventStepProps } from "./Types/EventOrderForm.Types";
 import { EventContactPage } from "./EventOrderPages/eventContactPage";
 import EventDetailsPage from "./EventOrderPages/eventDetailsPage";
 import EventPackagePage from "./EventOrderPages/eventPackagePage";

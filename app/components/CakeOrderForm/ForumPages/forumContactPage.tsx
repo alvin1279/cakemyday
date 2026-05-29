@@ -8,7 +8,7 @@ import {
   FieldSet,
 } from "~/components/ui/field";
 import { Input } from "~/components/ui/input";
-import type { StepProps } from "../Forum.Types";
+import type { StepProps } from "../Types/Forum.Types";
 
 export default function ForumContactPage({ form, set, toggleArr }: StepProps) {
   return (

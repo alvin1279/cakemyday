@@ -1,9 +1,6 @@
-export interface EventFormState {
-  // Contact (identical fields to FormState so ForumContactPage can be reused)
-  fullName: string;
-  phone: string | null;
-  email: string;
-  contactPref: string[];
+import type { ContactFields } from "./SharedTypes";
+
+export interface EventFormState extends ContactFields {
 
   // Event details
   eventType: string;

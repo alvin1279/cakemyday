@@ -1,4 +1,4 @@
-import type { EventStepPropsMinimal } from "../EventOrderForm.Types";
+import type { EventStepPropsMinimal } from "../Types/EventOrderForm.Types";
 import { PACKAGES, EVENT_TYPES } from "../eventOrder.data";
 import { Label } from "~/components/ui/label";
 import { Textarea } from "~/components/ui/textarea";

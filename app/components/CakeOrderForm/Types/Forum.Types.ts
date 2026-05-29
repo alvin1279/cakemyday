@@ -1,14 +1,12 @@
+import type { ContactFields } from "./SharedTypes";
+
 export interface Flavor {
   id: string;
   label: string;
   emoji: string;
 }
 
-export interface FormState {
-  fullName: string;
-  phone: string | null;
-  email: string;
-  contactPref: string[];
+export interface FormState extends ContactFields{
   orderType: string;
   withinDistance: boolean;
   flavors: string[];
