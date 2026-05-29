@@ -130,7 +130,7 @@
 .card {
   background: #fff;
   border-radius: 20px;
-  box-shadow: 0 4px 32px var(--blush);
+  box-shadow: 0 4px 32px color-mix(in srgb, var(--petal), transparent 50%);
   margin: 16px auto 0;
   max-width: 580px;
   padding: 28px 28px 20px;
