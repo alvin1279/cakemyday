@@ -26,7 +26,4 @@ export interface StepProps {
   set: <K extends keyof FormState>(key: K, val: FormState[K]) => void;
   toggleArr: (key: "contactPref" | "flavors" | "toppings", val: string) => void;
 }
-export interface StepPropsMinimal {
-  form: FormState;
-  set: <K extends keyof FormState>(key: K, val: FormState[K]) => void;
-}
+export type StepPropsMinimal = Omit<StepProps, "toggleArr">;

@@ -5,28 +5,28 @@ import { RadioGroupItem, RadioGroup } from "~/components/ui/radio-group";
 import { Card } from "~/components/ui/card";
 import { Cake, Sparkles, MapPin } from "lucide-react";
 
-export default function ForumOrderTypePage({ form, set }: StepPropsMinimal) {
-  const orderOptions = [
-    {
-      value: "flight",
-      icon: <Cake className="w-6 h-6 text-berry" />,
-      title: "Presale Cake Flight",
-      badge: "$15",
-      description:
-        "Flavors are announced via our social media for each presale — follow us to stay in the loop!",
-      highlights: ["3 mini cakes", "$15 per order"],
-    },
-    {
-      value: "custom",
-      icon: <Sparkles className="w-6 h-6 text-berry" />,
-      title: "Custom Order",
-      badge: "$25",
-      description:
-        "Hand-pick your own flavors for a fully personalized box of mini cakes.",
-      highlights: ["5 mini cakes", "$25 per order"],
-    },
-  ];
+const ORDER_OPTIONS = [
+  {
+    value: "flight",
+    icon: <Cake className="w-6 h-6 text-berry" />,
+    title: "Presale Cake Flight",
+    badge: "$15",
+    description:
+      "Flavors are announced via our social media for each presale — follow us to stay in the loop!",
+    highlights: ["3 mini cakes", "$15 per order"],
+  },
+  {
+    value: "custom",
+    icon: <Sparkles className="w-6 h-6 text-berry" />,
+    title: "Custom Order",
+    badge: "$25",
+    description:
+      "Hand-pick your own flavors for a fully personalized box of mini cakes.",
+    highlights: ["5 mini cakes", "$25 per order"],
+  },
+];
 
+export default function ForumOrderTypePage({ form, set }: StepPropsMinimal) {
   return (
     <div className="flex flex-col items-center p-4 sm:p-8 rounded-lg shadow-md w-full max-w-2xl mx-auto shadow-petal/50">
       <h1 className="mb-2 mt-4 text-2xl font-bold text-berry text-center">
@@ -41,7 +41,7 @@ export default function ForumOrderTypePage({ form, set }: StepPropsMinimal) {
         className="flex flex-col sm:flex-row gap-4 w-full"
         onValueChange={(value) => set("orderType", value)}
       >
-        {orderOptions.map(
+        {ORDER_OPTIONS.map(
           ({ value, icon, title, badge, description, highlights }) => {
             const isSelected = form.orderType === value;
             return (

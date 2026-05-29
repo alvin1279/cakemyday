@@ -26,7 +26,4 @@ export interface EventStepProps {
   toggleArr?: (key: "contactPref", val: string) => void;
 }
 
-export interface EventStepPropsMinimal {
-  form: EventFormState;
-  set: <K extends keyof EventFormState>(key: K, val: EventFormState[K]) => void;
-}
+export type EventStepPropsMinimal = Omit<EventStepProps, "toggleArr">;
